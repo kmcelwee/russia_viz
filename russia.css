@@ -1,0 +1,283 @@
+h3 {
+	position: fixed;
+	top: 125px;
+	right: 30px;
+	font-size: smaller;
+	font-style: italic;
+}
+
+.circle:hover {
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .2), 0 0 0 1px rgba(0, 0, 0, .08);
+} [tooltip] {
+  /*margin: 20px 60px;*/
+  position: relative;
+  display: inline-block;
+}
+
+[tooltip]::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+  z-index: 99;
+  opacity: 0;
+}
+
+[tooltip-position='left']::before {
+  left: 0%;
+  top: 50%;
+  margin-left: -12px;
+  transform: translatey(-50%) rotate(-90deg)
+}
+
+[tooltip-position='top']::before {
+  left: 50%;
+}
+
+[tooltip-position='bottom']::before {
+  top: 100%;
+  margin-top: 8px;
+  transform: translateX(-50%) translatey(-100%) rotate(-180deg)
+}
+
+[tooltip-position='right']::before {
+  left: 100%;
+  top: 50%;
+  /*margin-left: 1px;*/
+  transform: translatey(-50%) rotate(90deg)
+}
+
+[tooltip]::after {
+  content: attr(tooltip);
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  transform: translateX(-50%) translateY(-100%);
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: #fff;
+  padding: 4px 2px;
+  font-size: 12px;
+  min-width: 150px;
+  border-radius: 5px;
+  pointer-events: none;
+  /*padding: 4px 4px;*/
+  z-index: 99;
+  opacity: 0;
+}
+
+[tooltip-position='left']::after {
+  left: 0%;
+  top: 50%;
+  /*margin-left: -8px;*/
+  transform: translateX(-100%) translateY(-50%);
+}
+
+[tooltip-position='top']::after {
+  left: 50%;
+}
+
+[tooltip-position='buttom']::after {
+  top: 100%;
+  /*margin-top: 8px;*/
+  transform: translateX(-50%) translateY(0%);
+}
+
+[tooltip-position='right']::after {
+  left: 100%;
+  top: 50%;
+  /*margin-left: 8px;*/
+  transform: translateX(0%) translateY(-50%);
+}
+
+[tooltip]:hover::after,
+[tooltip]:hover::before {
+  opacity: 1;
+  transition-delay: 1.0s;
+  transition: all 0.5s;
+}
+
+
+body {
+	font-family: verdana;
+}
+
+h1 {
+	text-align: center;
+}
+
+span {
+	font-style: italic;
+	font-size: smaller;
+	margin: 5px;
+}
+
+nav {
+	width: 100%;
+	text-align: center;
+}
+
+.fixed_header {
+	background: white;
+	margin: 0px;
+	padding: 0px;
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	z-index: 1;
+	min-width: 610px;
+}
+
+.cal {
+	border: 1px solid black;
+}
+
+.date_range {
+	position: absolute;
+	height: 4px;
+	background-color: white;
+}
+
+.date_range:hover {
+	background-color: black;
+}
+
+#future_years {
+	padding-top: 200px;
+}
+
+.circle {
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.time_container {
+	position: relative;
+	display: block;
+	height: 48px;
+	width: 100%;
+	background-color: #555;
+}
+
+.circle:hover{
+	background: black;
+}
+
+.nav_button {
+	text-align: center;
+	padding: 5px 2%;
+	margin: 1px auto;
+	font-style: bold;
+	color: white;
+	display: inline-block;
+}
+
+
+
+/*CATEGORY COLORING */
+
+.MAJOR {
+	/*MAJOR EVENTS*/
+	background: #dd2e44;
+}
+.INVESTIGATIONS {
+	background: #573e3f;
+}
+.RUSSIANS {
+	/*RUSSIANS, HACKING*/
+	background: #065535;
+}
+.TRUMP {
+	background: #FF4D00;
+}
+.COHEN {
+	background: #125876;
+}
+.MANAFORT {
+	/*MANAFORT and GATES*/
+	background: #996699;
+}
+.KUSHNER {
+	background: #133337;
+}
+.JR {
+	/*TRUMP JR.*/
+	background: #33735f;
+}
+.FLYNN {
+	background: #f97253;
+}
+.PAPADOPOULOS {
+	background: #000066;
+}
+.PAGE {
+	background: #006666;
+}
+.SESSIONS {
+	/*SESSIONS, STONE AND OTHER */
+	background: #8e8e8e;
+}
+
+.MAJOR:hover {
+	/*MAJOR EVENTS*/
+	background: #eb828f;
+}
+.INVESTIGATIONS:hover {
+	background: #957C7D;
+}
+.RUSSIANS:hover {
+	/*RUSSIANS, HACKING*/
+	background: #449373;
+}
+.TRUMP:hover {
+	background: #ffa67f;
+}
+
+.COHEN:hover {
+	background: #5096B4;
+}
+.MANAFORT:hover {
+	/*MANAFORT and GATES*/
+	background: #D7A4D7;
+}
+.KUSHNER:hover {
+	background: #517175;
+}
+.JR:hover {
+	/*TRUMP JR.:*/
+	background: #71B19D;
+}
+.FLYNN:hover {
+	background: #fba18c;
+}
+.PAPADOPOULOS:hover {
+	background: #3E3EA4;
+}
+.PAGE:hover {
+	background: #3EA4A4;
+}
+.SESSIONS:hover {
+	/*SESSIONS, STONE AND OTHER */
+	background: #cccccc;
+}
+
+.active {
+	background: white;
+	color: black;
+}
+.active:hover {
+	color:white;
+}
+
+/*TRYING TOOLTIP*/
+
+
+
+
