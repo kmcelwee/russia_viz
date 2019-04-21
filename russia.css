@@ -179,7 +179,11 @@ nav {
 	display: inline-block;
 }
 
-
+p {
+	text-align: center;
+	font-style: italic;
+	font-size: small;
+}
 
 /*CATEGORY COLORING */
 
