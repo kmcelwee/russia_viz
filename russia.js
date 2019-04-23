@@ -1,33 +1,42 @@
 // attempted
 var y = {"2005": ["MANAFORT"], "2006": ["COHEN", "MANAFORT", "SESSIONS"], "2007": ["TRUMP", "MANAFORT"], "2008": ["TRUMP"], "2011": ["MANAFORT"], "2012": ["MANAFORT"], "2013": ["TRUMP", "COHEN", "MANAFORT", "PAGE"], "2014": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "FLYNN", "SESSIONS"], "2015": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "FLYNN", "SESSIONS"], "2016": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "KUSHNER", "JR", "FLYNN", "PAPADOPOULOS", "PAGE", "SESSIONS"], "2018": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "KUSHNER", "JR", "FLYNN", "PAPADOPOULOS", "PAGE", "SESSIONS"], "2017": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "KUSHNER", "JR", "FLYNN", "PAPADOPOULOS", "PAGE", "SESSIONS"], "2019": ["MAJOR", "RUSSIANS", "COHEN", "SESSIONS"]};
 
-var cal = `<div class="cal">
-		<span style="position: absolute; left: 0%;">Jan</span>
-		<span style="position: absolute; left: 8.33%;">Feb</span>
-		<span style="position: absolute; left: 16.66%;">Mar</span>
-		<span style="position: absolute; left: 25%;">April</span>
-		<span style="position: absolute; left: 33.33%;">May</span>
-		<span style="position: absolute; left: 41.66%;">June</span>
-		<span style="position: absolute; left: 50%;">July</span>
-		<span style="position: absolute; left: 58.33%;">Aug</span>
-		<span style="position: absolute; left: 66.66%;">Sept</span>
-		<span style="position: absolute; left: 75%;">Oct</span>
-		<span style="position: absolute; left: 83.33%;">Nov</span>
-		<span style="position: absolute; left: 91.66%;">Dec</span>
+var cal = `
+	<div class="cal">
+		<span style="width: 8.47%;">Jan</span>
+		<span class="month" style="width: 7.92%;">Feb</span>
+		<span class="month" style="width: 8.47%;">Mar</span>
+		<span class="month" style="width: 8.2%;">April</span>
+		<span class="month" style="width: 8.47%;">May</span>
+		<span class="month" style="width: 8.2%;">June</span>
+		<span class="month" style="width: 8.47%;">July</span>
+		<span class="month" style="width: 8.47%;">Aug</span>
+		<span class="month" style="width: 8.19%;">Sept</span>
+		<span class="month" style="width: 8.47%;">Oct</span>
+		<span class="month" style="width: 8.2%;">Nov</span>
+		<span class="month" style="width: 8.47%;">Dec</span>
 	</div>`
+
+var after_info = `Data collected by the PBS NewsHour<br>
+	Visualization by <a href="https://medium.com/@kevinrmcelwee">Kevin McElwee</a><br>
+	Source code available <a href="https://github.com/kmcelwee/russia_viz">here</a><br>
+	Original data available <a href="https://docs.google.com/spreadsheets/d/1utamO_EzX9VMyTKqWGF4x2upqohYCRYIdzyrx6YEyyk/edit?usp=sharing">here</a>`
 
 function toggle() {
 	cat = event.target.classList[1];
-
 	event.target.classList.toggle('active');
 
 	arr = document.getElementsByClassName(cat);
 	for (var i = 0; i < arr.length; i++) {
 		if (arr[i].classList.contains('time_container')) {
-			if (arr[i].style.display == 'none') {
-				arr[i].style.display = 'block';
+			if (arr[i].style['height'] == '0px') {
+				arr[i].style['height'] = '48px';
+				arr[i].style['visibility'] = 'visible';
+				arr[i].style['transition'] = 'visibility 0ms 0ms, height 500ms ease-out, opacity 100ms ease-in';
 			} else {
-				arr[i].style.display = 'none';
+				arr[i].style['height'] = '0px';
+				arr[i].style['visibility'] = 'hidden';
+				arr[i].style['transition'] = 'visibility 0ms 500ms, height 500ms ease-out, opacity 100ms ease-in';
 			}
 		}
 	}
@@ -48,7 +57,7 @@ function years() {
 	for (var i = l.length - 1; i >= 0; i--) {
 		output += `<div id="${l[i]}"><h2>${l[i]}</h2>${createYear(y[l[i]], l[i])}</div>`;
 	}
-	document.getElementById("future_years").innerHTML = output;
+	document.getElementById("all_years").innerHTML = output;
 }
 
 function createAnnual(j) {
@@ -145,7 +154,9 @@ window.onload = function() {
         var all_j = data;
         years();
         all_items(all_j);
+        document.getElementById("after_info").innerHTML = after_info;
         check_mobile();
+        
     });
 
 }
