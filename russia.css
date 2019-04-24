@@ -14,6 +14,18 @@ h1 {
 	text-align: center;
 }
 
+.above_item {
+	display: inline-block;
+	position: relative;
+	height: 25px;
+	width: 25px;
+}
+
+.above_container {
+	display: block;
+	/*height: 50px;*/
+	height: auto;
+}
 
 .time_container {
 	position: relative;
@@ -21,11 +33,10 @@ h1 {
 	height: 48px;
 	width: 100%;
 	transition: height 500ms ease-out, opacity 100ms ease-in;
-	
 }
 
 [tooltip] {
-  position: fixed;
+  /*position: fixed;*/
   display: inline-block;
 }
 
@@ -70,6 +81,9 @@ nav {
 	text-align: center;
 }
 
+a {
+	text-decoration: none;
+}
 
 
 .date_range {
@@ -87,10 +101,6 @@ nav {
 	padding-top: 185px;
 }
 
-.test {
-	/*background: blue;*/
-	/*margin-right: 50px;*/
-}
 .cal {
 	border-top: 1px solid black;
 }
