@@ -1,12 +1,4 @@
-// attempted
-var y = {"2005": ["MANAFORT"], "2006": ["COHEN", "MANAFORT", "SESSIONS"], "2007": ["TRUMP", "MANAFORT"], "2008": ["TRUMP"], "2011": ["MANAFORT"], "2012": ["MANAFORT"], "2013": ["TRUMP", "COHEN", "MANAFORT", "PAGE"], "2014": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "FLYNN", "SESSIONS"], "2015": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "FLYNN", "SESSIONS"], "2016": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "KUSHNER", "JR", "FLYNN", "PAPADOPOULOS", "PAGE", "SESSIONS"], "2018": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "KUSHNER", "JR", "FLYNN", "PAPADOPOULOS", "PAGE", "SESSIONS"], "2017": ["MAJOR", "INVESTIGATIONS", "RUSSIANS", "TRUMP", "COHEN", "MANAFORT", "KUSHNER", "JR", "FLYNN", "PAPADOPOULOS", "PAGE", "SESSIONS"], "2019": ["MAJOR", "RUSSIANS", "COHEN", "SESSIONS"]};
-
-var y = {'1998': [], '1999 - 2000': [], '2001': [], '2004': [], '2005': ['MANAFORT'], '2006': ['COHEN', 'MANAFORT', 'SESSIONS'], '2007': ['TRUMP', 'MANAFORT'], '2008': ['TRUMP'], '2011': ['MANAFORT'], '2012': ['MANAFORT'], '2013': ['PAGE', 'COHEN', 'TRUMP', 'MANAFORT'], '2014': ['MAJOR', 'FLYNN', 'SESSIONS', 'RUSSIANS', 'INVESTIGATIONS'], '2015': ['MANAFORT',
-  'RUSSIANS',  'SESSIONS',  'MAJOR',  'INVESTIGATIONS',  'TRUMP',  'FLYNN',  'COHEN'],
- '2016': ['COHEN',  'RUSSIANS',  'MAJOR',  'FLYNN',  'SESSIONS',  'MANAFORT',  'PAPADOPOULOS',  'PAGE',  'TRUMP',  'INVESTIGATIONS',  'JR',  'KUSHNER'],
- '2018': ['MAJOR',  'SESSIONS',  'INVESTIGATIONS',  'TRUMP',  'MANAFORT',  'PAGE',  'COHEN',  'JR',  'RUSSIANS',  'FLYNN',  'PAPADOPOULOS',  'KUSHNER'],
- '2017': ['TRUMP',  'FLYNN',  'INVESTIGATIONS',  'KUSHNER',  'COHEN',  'SESSIONS',  'RUSSIANS',  'MANAFORT',  'MAJOR',  'PAPADOPOULOS',  'PAGE',  'JR'],
- '2019': ['SESSIONS', 'COHEN', 'MAJOR', 'RUSSIANS']}
+var y = {'1998': [], '1999 - 2000': [], '2001': [], '2004': [], '2005': ['MANAFORT'], '2006': ['COHEN', 'MANAFORT', 'SESSIONS'], '2007': ['TRUMP', 'MANAFORT'], '2008': ['TRUMP'], '2011': ['MANAFORT'], '2012': ['MANAFORT'], '2013': ['TRUMP', 'COHEN', 'MANAFORT', 'PAGE'], '2014': ['MAJOR', 'INVESTIGATIONS', 'RUSSIANS', 'FLYNN', 'SESSIONS'], '2015': ['MAJOR',  'INVESTIGATIONS',  'RUSSIANS',  'TRUMP',  'COHEN',  'MANAFORT',  'FLYNN',  'SESSIONS'], '2016': ['MAJOR',  'INVESTIGATIONS',  'RUSSIANS',  'TRUMP',  'COHEN',  'MANAFORT',  'KUSHNER',  'JR',  'FLYNN',  'PAPADOPOULOS',  'PAGE',  'SESSIONS'], '2018': ['MAJOR',  'INVESTIGATIONS',  'RUSSIANS',  'TRUMP',  'COHEN',  'MANAFORT',  'KUSHNER',  'JR',  'FLYNN',  'PAPADOPOULOS',  'PAGE',  'SESSIONS'], '2017': ['MAJOR',  'INVESTIGATIONS',  'RUSSIANS',  'TRUMP',  'COHEN',  'MANAFORT',  'KUSHNER',  'JR',  'FLYNN',  'PAPADOPOULOS',  'PAGE',  'SESSIONS'], '2019': ['MAJOR', 'RUSSIANS', 'COHEN', 'SESSIONS']};
 
 var cal = `
 	<div class="cal">
@@ -27,7 +19,7 @@ var cal = `
 var after_info = `Data collected by the PBS NewsHour<br>
 	Visualization by <a href="https://medium.com/@kevinrmcelwee">Kevin McElwee</a><br>
 	Source code available <a href="https://github.com/kmcelwee/russia_viz">here</a><br>
-	Original data available <a href="https://docs.google.com/spreadsheets/d/1utamO_EzX9VMyTKqWGF4x2upqohYCRYIdzyrx6YEyyk/edit?usp=sharing">here</a>`
+	Original data available <a href="https://docs.google.com/spreadsheets/d/1utamO_EzX9VMyTKqWGF4x2upqohYCRYIdzyrx6YEyyk/edit?usp=sharing">here</a>`;
 
 function toggle() {
 	cat = event.target.classList[1];
@@ -49,26 +41,28 @@ function toggle() {
 		if (arr[i].classList.contains('above_item')) {
 			if (arr[i].style['width'] == '0px') {
 				arr[i].style['width'] = '25px';
+				arr[i].style['margin-right'] = '5px';
 				arr[i].style['visibility'] = 'visible';
-				arr[i].style['transition'] = 'visibility 0ms 0ms, width 500ms ease-out, opacity 100ms ease-in';
+				arr[i].style['transition'] = 'visibility 0ms 0ms, margin-right 150ms 500ms, width 500ms linear, opacity 100ms linear';
 			} else {
 				arr[i].style['width'] = '0px';
 				arr[i].style['visibility'] = 'hidden';
-				arr[i].style['transition'] = 'visibility 0ms 500ms, width 500ms ease-out, opacity 100ms ease-in';
+				arr[i].style['margin-right'] = '0px';
+				arr[i].style['transition'] = 'visibility 0ms 500ms, margin-right 150ms 500ms, width 500ms linear, opacity 100ms linear';
 			}
 		}
 	}
 }
 
 function createYear(j, y) {
-	return_s = "";
+	return_s = "<div>";
 	for (var i = 0; i < j.length; i++) {
-		return_s += `<div id="${y}_${j[i]}" class="time_container ${j[i]}"></div>`;
+		return_s += `<div id="${y}_${j[i]}" class="time_container ${j[i]}" onmouseover="highlight_cat('${j[i]}')" onmouseout="unhighlight_cat('${j[i]}')"></div>`;
 	}
 	if (['2004', '2001', '1999 - 2000', '1998'].indexOf(y) < 0) {
 		return_s += cal;
 	}
-	return_s += '<br>';
+	return_s += '</div><br>';
 	return return_s;
 }
 
@@ -76,9 +70,10 @@ function years() {
 	l = ['1998', '1999 - 2000', '2001', '2004', '2005', '2006', '2007', '2008', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'];
 	output = "";
 	for (var i = l.length - 1; i >= 0; i--) {
-		output += `<div id="${l[i]}">
+		var id = (l[i] == '1999 - 2000') ? '1999' : l[i]
+		output += `<div id="y_${id}">
 					<h2>${l[i]}</h2>
-					<div class="above_container" id="${l[i]}_sub"></div>
+					<div class="above_container" id="sub_${l[i]}"></div>
 					${createYear(y[l[i]], l[i])}
 				</div>`;
 	}
@@ -91,9 +86,7 @@ function createAbove(m) {
 	} else {
 		var time = ''
 	}
-	return `<a href="${m.url}" target="_blank">
-		<div class="above_item ${m.cat_id}" tooltip="${time} ${m.info}" tooltip-position="right"></div>
-	</a>`;
+	return `<a class="above_item_link" href="${m.url}" target="_blank"><div class="above_item ${m.cat_id}" onmouseover="highlight_cat('${m.cat_id}')" onmouseout="unhighlight_cat('${m.cat_id}')" tooltip="${time} ${m.info}" tooltip-position="right"></div></a>`;
 }
 
 function createRange(j) {
@@ -108,12 +101,11 @@ function createRange(j) {
 	else { var pos = "top"; }
 
 	var return_s = (`<a href="${j.url}" target="_blank"><div class="date_range" tooltip="${j.time_description} - ${j.info}"
-			tooltip-position="${pos}"
+			tooltip-position="${pos}" 
 			style="top: ${d[j.level]}px; left: ${j.start_p}%; width: ${j['width']}%;"></div><a>`);
 
 	return return_s;
 }
-
 
 function createCircle(j) {
   // var return_s = (`
@@ -139,7 +131,7 @@ function createCircle(j) {
 	}
 	else { var pos = "top"}
 	var return_s = (`<a href="${j.url}" target="_blank"><div class='circle' tooltip="${j.time_description} - ${j.info}"
-		tooltip-position="${pos}"
+		tooltip-position="${pos}" 
 		style='top: ${d[j.level]}px; left: ${j.start_p}%;'></div></a>`);
 	return return_s;
 }
@@ -172,7 +164,7 @@ function all_items(all_j) {
 			var m = all_j[key];
 			if (m['year'] == year && m["start"] == null) { output += createAbove(m); }
 		}
-		var id_text = `${year}_sub`;
+		var id_text = `sub_${year}`;
 		document.getElementById(id_text).innerHTML = output;	
 	}
 	
@@ -183,6 +175,29 @@ function check_mobile() {
     if (mobile) { alert("This page is meant to be viewed on a desktop. Some features will not be available on a mobile device."); } 
 }
 
+function highlight_cat(cat) {
+	var navs = document.getElementsByClassName("nav_button");
+	for (var i = 0; i < navs.length; i++) {
+		if (navs[i].classList[1] == cat) {
+			// navs[i].style.opacity = .8;
+			// navs[i].style.borderColor = 'black';
+			navs[i].style.transform = 'scale(1.05)';
+		} 
+	}
+	console.log('hi!')
+}
+
+function unhighlight_cat(cat) {
+	var navs = document.getElementsByClassName("nav_button");
+	for (var i = 0; i < navs.length; i++) {
+		if (navs[i].classList[1] == cat) {
+			// navs[i].style.opacity = 1;
+			// navs[i].style.borderColor = 'white';
+			navs[i].style.transform = 'scale(1)';
+		} 
+	}
+	console.log('hi!')
+}
 
 window.onload = function() {
     // var all_j;

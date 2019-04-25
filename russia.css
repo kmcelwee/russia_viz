@@ -11,20 +11,37 @@ body {
 
 h1 {
 	padding-top: 20px;
+	padding-bottom: 10px;
 	text-align: center;
+}
+
+nav {
+	width: 100%;
+	text-align: center;
+}
+
+.above_item_link {
+	text-decoration: none;
+	margin: 0px;
+}
+
+p {
+	text-align: center;
+	font-style: italic;
+	font-size: small;
 }
 
 .above_item {
 	display: inline-block;
 	position: relative;
+	margin-right: 5px;
+	/*border: solid white 5px;*/
 	height: 25px;
 	width: 25px;
 }
-
-.above_container {
-	display: block;
-	/*height: 50px;*/
-	height: auto;
+.above_item:hover {
+	opacity: .90;
+	z-index: 5;
 }
 
 .time_container {
@@ -32,14 +49,17 @@ h1 {
 	display: block;
 	height: 48px;
 	width: 100%;
-	transition: height 500ms ease-out, opacity 100ms ease-in;
+	transition: height 250ms ease-out, opacity 100ms ease-in;
+}
+.time_container:hover {
+	opacity: .90;
+	z-index: 1;
 }
 
 [tooltip] {
   /*position: fixed;*/
   display: inline-block;
 }
-
 [tooltip]::after {
   content: attr(tooltip);
   position: absolute;
@@ -56,35 +76,22 @@ h1 {
   pointer-events: none;
   z-index: 99;
   opacity: 0;
+  /*transform: scale(1);*/
 }
-
 [tooltip-position='left']::after {
   left: 0%;
   top: 50%;
   transform: translateX(-103%) translateY(-50%);
 }
-
 [tooltip-position='right']::after {
   left: 100%;
   top: 50%;
   transform: translateX(3%) translateY(-50%);
 }
-
 [tooltip]:hover::after {
-  opacity: 1 ;
+  opacity: 1;
   transition: all 0.5s;
 }
-
-
-nav {
-	width: 100%;
-	text-align: center;
-}
-
-a {
-	text-decoration: none;
-}
-
 
 .date_range {
 	position: absolute;
@@ -92,19 +99,9 @@ a {
 	background-color: white;
 	transition: background-color 250ms ease-in;
 }
-
 .date_range:hover {
 	background-color: black;
 }
-
-#all_years {
-	padding-top: 185px;
-}
-
-.cal {
-	border-top: 1px solid black;
-}
-
 
 span {
 	/*position: absolute;*/
@@ -122,12 +119,10 @@ span {
 	position: absolute;
 	background: black;
 	bottom: 1.3em;
-	/*left: 2px;*/
 	left: -2px;
 	height: 5px;
 	width: 1px;
 }
-
 
 .circle {
 	position: absolute;
@@ -137,14 +132,6 @@ span {
 	border-radius: 50%;
 	transition: background 100ms ease-in;
 }
-
-
-
-.time_container:hover {
-	opacity: .90;
-	z-index: 1;
-}
-
 .circle:hover{
 	background: black;
 }
@@ -163,11 +150,31 @@ span {
 	transform: scale(1.05);
 }
 
+.fixed_header {
+	background: white;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	z-index: 98;
+}
 
-p {
-	text-align: center;
-	font-style: italic;
-	font-size: small;
+#all_years {
+	padding-top: 185px;
+}
+
+.cal {
+	bottom: 0;
+	padding-bottom: 25px;
+	z-index: 1;
+	background: white;
+	position: sticky;
+	border-top: 1px solid black;
+}
+
+.above_container {
+	min-height: 30px;
+	font-size: 0;
 }
 
 /*CATEGORY COLORING */
@@ -184,8 +191,9 @@ p {
 .PAGE { background: #006666; }
 .SESSIONS { background: #8e8e8e; }
 
+/* must be below category coloring*/
 .active {
-	background: white; 	
+	background: white;
 	color: black;
 	border-color: rgba(0, 0, 0, .25);
 	transition: background 100ms ease-in;
@@ -194,11 +202,9 @@ p {
 	border-color: rgba(0, 0, 0, .75);
 }
 
-.fixed_header {
-	background: white;
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	z-index: 1;
+
+#y_2001, #y_2004, #y_1998, #y_1999 {
+	display: inline-block;
+	/*float: left;*/
+	width: 25%;
 }
