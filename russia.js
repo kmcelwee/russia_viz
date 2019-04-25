@@ -19,7 +19,8 @@ var cal = `
 var after_info = `Data collected by the PBS NewsHour<br>
 	Visualization by <a href="https://medium.com/@kevinrmcelwee">Kevin McElwee</a><br>
 	Source code available <a href="https://github.com/kmcelwee/russia_viz">here</a><br>
-	Original data available <a href="https://docs.google.com/spreadsheets/d/1utamO_EzX9VMyTKqWGF4x2upqohYCRYIdzyrx6YEyyk/edit?usp=sharing">here</a>`;
+	Original data available <a href="https://docs.google.com/spreadsheets/d/1utamO_EzX9VMyTKqWGF4x2upqohYCRYIdzyrx6YEyyk/edit?usp=sharing">here</a><br><br>
+	Last updated March 24, 2019`;
 
 function toggle() {
 	cat = event.target.classList[1];
@@ -95,13 +96,14 @@ function createRange(j) {
 		1: 34,
 		2: 28,
 	};
+	// var pos = 'top';
 	
-	if (j.start_p < 10) { var pos = "right"; }
-	else if (j.start_p > 90) { var pos = "left"; }
-	else { var pos = "top"; }
+	// if (j.start_p < 10) { var pos = "right"; } tooltip-position="${pos}" 
+	// else if (j.start_p > 90) { var pos = "left"; }
+	// else { var pos = "top"; }
 
 	var return_s = (`<a href="${j.url}" target="_blank"><div class="date_range" tooltip="${j.time_description} - ${j.info}"
-			tooltip-position="${pos}" 
+			
 			style="top: ${d[j.level]}px; left: ${j.start_p}%; width: ${j['width']}%;"></div><a>`);
 
 	return return_s;
@@ -123,15 +125,14 @@ function createCircle(j) {
 		3: 28,
 		4: 34,
 	}
-	if (j.start_p < 10) {
-		var pos = "right"
-	}
-	else if (j.start_p > 90) {
-		var pos = "left"
-	}
-	else { var pos = "top"}
+	// if (j.start_p < 10) {
+	// 	var pos = "right"
+	// }
+	// else if (j.start_p > 90) { tooltip-position="${pos}" 
+	// 	var pos = "left"
+	// // }
+	// else { var pos = "top"}
 	var return_s = (`<a href="${j.url}" target="_blank"><div class='circle' tooltip="${j.time_description} - ${j.info}"
-		tooltip-position="${pos}" 
 		style='top: ${d[j.level]}px; left: ${j.start_p}%;'></div></a>`);
 	return return_s;
 }
@@ -176,24 +177,31 @@ function check_mobile() {
 }
 
 function highlight_cat(cat) {
-	var navs = document.getElementsByClassName("nav_button");
+	// var navs = document.getElementsByClassName("nav_button");
+	var navs = document.getElementsByClassName(cat);
 	for (var i = 0; i < navs.length; i++) {
-		if (navs[i].classList[1] == cat) {
-			// navs[i].style.opacity = .8;
-			// navs[i].style.borderColor = 'black';
-			navs[i].style.transform = 'scale(1.05)';
+		if (navs[i].classList.contains(cat)) {
+			if (navs[i].classList.contains('nav_button')) {
+				navs[i].style.transform = 'scale(1.05)';
+			}
+			else {
+				navs[i].style.opacity = .8;
+			}
 		} 
 	}
-	console.log('hi!')
 }
 
 function unhighlight_cat(cat) {
-	var navs = document.getElementsByClassName("nav_button");
+	// var navs = document.getElementsByClassName("nav_button");
+	var navs = document.getElementsByClassName(cat);
 	for (var i = 0; i < navs.length; i++) {
-		if (navs[i].classList[1] == cat) {
-			// navs[i].style.opacity = 1;
-			// navs[i].style.borderColor = 'white';
-			navs[i].style.transform = 'scale(1)';
+		if (navs[i].classList.contains(cat)) {
+			if (navs[i].classList.contains('nav_button')) {
+				navs[i].style.transform = 'scale(1)';
+			}
+			else {
+				navs[i].style.opacity = 1;
+			}
 		} 
 	}
 	console.log('hi!')
