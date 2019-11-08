@@ -17,7 +17,7 @@ var cal = `
 	</div>`
 
 var after_info = `Data collected by the PBS NewsHour<br>
-	Visualization by <a href="https://medium.com/@kevinrmcelwee">Kevin McElwee</a><br>
+	Visualization by <a href="http://brownanalytics.com">Kevin McElwee</a><br>
 	Source code available <a href="https://github.com/kmcelwee/russia_viz">here</a><br>
 	Original data available <a href="https://docs.google.com/spreadsheets/d/1utamO_EzX9VMyTKqWGF4x2upqohYCRYIdzyrx6YEyyk/edit?usp=sharing">here</a><br><br>
 	Last updated March 24, 2019`;
@@ -208,14 +208,12 @@ function unhighlight_cat(cat) {
 }
 
 window.onload = function() {
-    // var all_j;
+    var all_j;
     $.getJSON("https://kmcelwee.github.io/russia_viz/data/clean.json", function(data) {
         var all_j = data;
         years();
         all_items(all_j);
         document.getElementById("after_info").innerHTML = after_info;
         check_mobile();
-        
     });
-
 }
