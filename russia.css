@@ -220,6 +220,10 @@ span {
 	position: absolute;
 }
 
+.go_home:hover {
+
+}
+
 .go_home:hover a {
 	display: inline-block;
 }
